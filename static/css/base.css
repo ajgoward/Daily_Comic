@@ -1,0 +1,25 @@
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffff;
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+}
+
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("/media/batman.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
