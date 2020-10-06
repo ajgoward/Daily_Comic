@@ -1,20 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display&display=swap');
+
 .navbar-dark .navbar-nav .nav-link {
     color: #ffff;
     padding-right: 3rem !important;
     padding-left: 3rem !important;
+    font-family: 'Playfair';
+    font-size: 20px;
+    text-align: right;
+    
 }
 
+.bg-dark{
+    background-color: black !important;
+}
+.navbar-brand{
+    font-family: 'Bangers';
+    font-size: 40px;
+    padding-right: 40px;
+    padding-left: 30px;
+}
 
+.dropdown-item{
+    font-family: 'Playfair';
+    font-size: 20px;
+}
 
+html {
+    height: 100%;
+}
 body, html {
   height: 100%;
   margin: 0;
 }
 
+/*recied from w3 schools */
 .bg {
   /* The image used */
   background-image: url("/media/batman.jpg");
-
+    
   /* Full height */
   height: 100%; 
 
@@ -22,4 +45,26 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .bg {
+  background-image: url("/media/street.jpg");
+  
+  }
+  .welcome{
+      padding-right: 100px;
+  }
+}
+
+.home-button {
+    font-size: 40px;
+    color: #ffff;
+    border-radius: 20px;
+    font-family: 'PlayFair';
+}
+
+.welcome-head {
+    color: #ffff;
+    font-family: 'Bangers';
 }
