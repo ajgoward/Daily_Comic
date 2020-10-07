@@ -15,6 +15,7 @@ class Product(models.Model):
     sku = models.CharField(max_length=254, blank=True)
     name = models.CharField(max_length=254)
     universe = models.CharField(max_length=254, blank=True)
+    hero = models.CharField(max_length=254, blank=True)
     author = models.CharField(max_length=254, blank=True)
     artist = models.CharField(max_length=254, blank=True)
     publishedby = models.CharField(max_length=254, blank=True)
