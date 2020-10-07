@@ -25,6 +25,16 @@
     font-size: 20px;
 }
 
+.search{
+    margin-left: 30rem;
+}
+
+.shopping{
+    font-size: 30px;
+    color: white;
+    padding-right: 40px;
+}
+
 html {
     height: 100%;
 }
@@ -47,7 +57,7 @@ body, html {
   background-size: cover;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .bg {
   background-image: url("/media/street.jpg");
   
@@ -55,6 +65,10 @@ body, html {
   .welcome{
       padding-right: 100px;
   }
+
+  .search{
+    margin-left: 0;
+}
 }
 
 .home-button {
