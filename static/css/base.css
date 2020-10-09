@@ -74,6 +74,7 @@ h1{
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  margin-bottom: 40px;
 }
 
 /* Place text in the middle of the image */
@@ -101,6 +102,9 @@ h1{
   h1{
       font-size: 40px;
   }
+  .stock{
+    width: 100%;
+}
 }
 
 .home-button {
