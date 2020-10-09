@@ -7,50 +7,47 @@
     <h1>All Products</h1>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid background">
                 <div class="row">
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-50 border-0">
+                            <div class="h-50 border-0 text-center mt-3">
                                 {% if product.image %}
                                 <a href="">
-                                    <img class="card-img-top img-fluid stock" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="img-thumbnai rounded mx-auto d-block stock" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                                 {% else %}
                                 <a href="">
-                                    <img class="card-img-top img-fluid stock" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="img-thumbnai rounded mx-auto d-block stock" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
-                                <div class="card-body pb-0">
-                                    <p class="mb-0">{{ product.name }}</p>
-                                </div>
-                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="  text-center ">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                                        <p class="mt-3 product-title">{{ product.name }}</p>
+                                            <p class="lead mb-1  font-weight-bold text-danger"><del>RRP: £{{ product.rrp }}</del></p>
+                                            <p class="lead mb-2  font-weight-bold">Our Price: £{{ product.price }}</p>
                                             {% if product.category %}
-                                            <p class="small mt-1 mb-0">
+                                            <p class="small mt-1 mb-1">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
                                                     <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
                                                 </a>
                                             </p>
                                             {% endif %}
                                               {% if product.universe %}
-                                            <p class="small mt-1 mb-0 text-muted">
+                                            <p class=" mt-1  text-muted small">
                                             <i class="fas fa-globe-americas"></i> {{ product.universe }}
                                             </p>
                                             {% endif %}
-                                            {% if product.rating %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                                            {% else %}
-                                                <small class="text-muted">No Rating</small>
-                                            {% endif %}
+                                                <small class="text-muted small"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
                                                     <a href="">Edit</a> | 
                                                     <a class="text-danger" href="">Delete</a>
                                                 </small>
                                             {% endif %}
+                                            <br>
+                                            <button type="button" class="mt-2 btn btn-warning produtPageButton">Add To Cart!</button>
                                         </div>
                                     </div>
                                 </div>
@@ -79,9 +76,4 @@
                     {% endfor %}
                 </div>
             </div>
-    <div class="btt-button shadow-sm rounded-0 border border-black">
-        <a class="btt-link d-flex h-100">
-            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
-        </a>	
-    </div>
 {% endblock %}

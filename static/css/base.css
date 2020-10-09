@@ -68,13 +68,13 @@ h1{
 
   /* Set a specific height */
   height: 40%;
-
+    background-color: black;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  margin-bottom: 40px;
+ 
 }
 
 /* Place text in the middle of the image */
@@ -102,9 +102,7 @@ h1{
   h1{
       font-size: 40px;
   }
-  .stock{
-    width: 100%;
-}
+  
 }
 
 .home-button {
@@ -119,3 +117,21 @@ h1{
     font-family: 'Bangers';
 }
 
+
+.product-text{
+     font-family: 'Playfair';
+    font-size: 20px;
+}
+
+
+.product-title{
+   font-family: 'Bangers';
+    font-size: 25px;
+}
+
+.produtPageButton{
+     color: #ffff;
+    border-radius: 20px;
+    font-family: 'Bangers';
+    font-size: 20px;
+}
