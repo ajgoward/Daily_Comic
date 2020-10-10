@@ -13,7 +13,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="h-50 border-0 text-center mt-3">
                                 {% if product.image %}
-                                <a href="">
+                                <a href="{% url 'item_detail' product.id %}">
                                     <img class="img-thumbnai rounded mx-auto d-block stock" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                                 {% else %}
