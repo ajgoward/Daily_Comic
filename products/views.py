@@ -15,9 +15,9 @@ def all_stock(request):
 
 def item_detail(request, product_id):
 
-    products = get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(Product, pk=product_id)
     context = {
-        'products': products,
+        'product': product,
     }
 
     return render(request, 'products/item-detail.html', context)
