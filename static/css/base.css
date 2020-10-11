@@ -127,11 +127,16 @@ h1{
 .product-title{
    font-family: 'Bangers';
     font-size: 25px;
+    color: black !important;
 }
 
 .produtPageButton{
-     color: #ffff;
+     color: #ffff !important;
     border-radius: 20px;
     font-family: 'Bangers';
     font-size: 20px;
+}
+
+.product-image{
+    width: 70%;
 }
