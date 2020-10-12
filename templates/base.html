@@ -55,20 +55,20 @@
 						All Products
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">By Price</a>
-						<a class="dropdown-item" href="#">By Rating</a>
+						<a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">By Price</a>
+						<a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">By Rating</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="{% url 'products' %}">All Products</a>
 					</div>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Graphic Novels</a>
+					<a class="nav-link" href="{% url 'products' %}?category=Graphic_Novels,Comics">Graphic Novels</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Toys</a>
+					<a class="nav-link" href="{% url 'products' %}?category=Toys">Toys</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Merch</a>
+					<a class="nav-link" href="{% url 'products' %}?category=Merchandise">Merch</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Subscriptions</a>
@@ -111,7 +111,7 @@
 		<div class="col-12 col-lg-4 my-auto py-1 py-lg-0  search">
 			<form method="GET" action="">
 				<div class="input-group w-100">
-					<input class="form-control  rounded-4" type="text" name="query" placeholder="Search our site">
+					<input class="form-control  rounded-4" type="text" name="q" placeholder="Search....">
 					<div class="input-group-append">
 						<button class="form-control btn btn-warning  border  rounded-4 " type="submit">
                                 <span class="icon">
@@ -154,16 +154,16 @@
 				<ul class="list-unstyled footer-links text-decoration-none">
 					{% if request.user.is_authenticated %}
 					<li><a class=" text-white " href="#">Profile</a></li>
-					<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+					<li><a class=" text-white " href="{% url 'account_logout' %}">Sign Out</a></li>
 					{% else %}
-					<li><a href="{% url 'account_login' %}">Sign In</a></li>
-					<li><a href="{% url 'account_signup' %}">Register</a></li>
+					<li><a class=" text-white " href="{% url 'account_login' %}">Sign In</a></li>
+					<li><a class=" text-white " href="{% url 'account_signup' %}">Register</a></li>
 					{% endif %}
-					<li><a href="{% url 'products' %}">All Products</a></li>
-					<li><a class="" href="#">Subscriptions</a></li>
-					<li><a class="" href="#">Merch</a></li>
-					<li><a class="" href="#">Toys</a></li>
-					<li><a class="" href="#">Graphic Novels</a></li>
+					<li><a  class=" text-white " href="{% url 'products' %}">All Products</a></li>
+					<li><a  class=" text-white " href="#">Subscriptions</a></li>
+					<li><a class=" text-white " href="{% url 'products' %}?category=Merchandise">Merch</a></li>
+					<li><a class=" text-white " href="{% url 'products' %}?category=Toys">Toys</a></li>
+					<li><a class=" text-white " href="{% url 'products' %}?category=Graphic_Novels,Comics">Graphic Novels</a></li>
 				</ul>
 			</div>
 			<div class="col">

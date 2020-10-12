@@ -78,8 +78,9 @@ footer {
     max-width: 70%;
 }
 
-a{
+a.text-white{
      color: #fff !important;
+    
 }
 
 html {
