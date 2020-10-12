@@ -11,7 +11,7 @@
 }
 
 .bg-dark{
-    background-color: black !important;
+    background-color: #081B19 !important;
 }
 .navbar-brand{
     font-family: 'Bangers';
@@ -33,6 +33,53 @@
     font-size: 30px;
     color: white;
     padding-right: 40px;
+}
+
+footer {
+    background-color: #081B19;
+    min-height: 120px;
+    width: -webkit-fill-available;
+    
+}
+
+/* footer styling */
+
+#footer-details{
+    padding: 20px;
+}
+
+.social-buttons{
+    margin: 20px;
+    font-size: 40px;
+    width: 20%;
+    border-radius: 60%;
+    color: #fff;
+}
+
+.fb-bg{
+    background-color:  #3b5998;
+}
+
+.pin-bg{
+    background-color:  #c8232c;
+   
+}
+
+.insta-bg{
+    background-color: #3f729b;
+}
+
+.footer-links{
+    color: #fff !important;
+      font-family: 'Playfair';
+}
+
+.card-image{
+    max-width: 70%;
+}
+
+a{
+     color: #fff !important;
 }
 
 html {
@@ -102,6 +149,11 @@ h1{
   h1{
       font-size: 40px;
   }
+
+  .social-buttons{
+    font-size: 20px;
+    width: auto;
+  }
   
 }
 
@@ -138,5 +190,5 @@ h1{
 }
 
 .product-image{
-    width: 70%;
+  max-width: 70%;
 }

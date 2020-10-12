@@ -42,7 +42,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
 		<a class="navbar-brand" href="{% url 'home' %}">Daily Comic</a>
 
-			
+
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -89,40 +89,40 @@
 						{% endif %}
 					</div>
 				</li>
-			
+
 			</ul>
 		</div>
-     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
-                            <div class="text-center shopping">
-                                <div><i class="fas fa-shopping-cart "></i></div>
-                                <p class="my-0">
-                                    {% if grand_total %}
-                                        ${{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                        $0.00
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </a>
-                    </li>
+		<li class="list-inline-item">
+			<a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+				<div class="text-center shopping">
+					<div><i class="fas fa-shopping-cart "></i></div>
+					<p class="my-0">
+						{% if grand_total %}
+						${{ grand_total|floatformat:2 }}
+						{% else %}
+						$0.00
+						{% endif %}
+					</p>
+				</div>
+			</a>
+		</li>
 	</nav>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
- <div class="col-12 col-lg-4 my-auto py-1 py-lg-0  search">
-                <form method="GET" action="">
-                    <div class="input-group w-100">
-                        <input class="form-control  rounded-4" type="text" name="query" placeholder="Search our site">
-                        <div class="input-group-append">
-                            <button class="form-control btn btn-warning  border  rounded-4 " type="submit">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+		<div class="col-12 col-lg-4 my-auto py-1 py-lg-0  search">
+			<form method="GET" action="">
+				<div class="input-group w-100">
+					<input class="form-control  rounded-4" type="text" name="query" placeholder="Search our site">
+					<div class="input-group-append">
+						<button class="form-control btn btn-warning  border  rounded-4 " type="submit">
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
                             </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-</nav>
+					</div>
+				</div>
+			</form>
+		</div>
+	</nav>
 
 	{% if messages %}
 	<div class="message-container"></div>
@@ -134,9 +134,46 @@
 	{% block content %}
 	{% endblock %}
 
+
+	<!-------footer-->
+	<footer>
+		<div class="row container-fluid">
+			<div class="col ">
+				<a href="https://facebook.com/" target="_blank" class="btn  social-buttons fb-bg">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="https://instagram.com/" target="_blank" class="btn  social-buttons insta-bg">
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a href="https://pinterest.com/" target="_blank" class="btn  social-buttons pin-bg">
+					<i class="fab fa-pinterest-p"></i>
+				</a>
+			</div>
+			<div class="col mt-2">
+				<h5 class="footer-links"> Useful links</h5>
+				<ul class="list-unstyled footer-links text-decoration-none">
+					{% if request.user.is_authenticated %}
+					<li><a class=" text-white " href="#">Profile</a></li>
+					<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+					{% else %}
+					<li><a href="{% url 'account_login' %}">Sign In</a></li>
+					<li><a href="{% url 'account_signup' %}">Register</a></li>
+					{% endif %}
+					<li><a href="{% url 'products' %}">All Products</a></li>
+					<li><a class="" href="#">Subscriptions</a></li>
+					<li><a class="" href="#">Merch</a></li>
+					<li><a class="" href="#">Toys</a></li>
+					<li><a class="" href="#">Graphic Novels</a></li>
+				</ul>
+			</div>
+			<div class="col">
+				<h5 class="footer-links mt-2">We Accept All Major Cards</h5>
+				<img class="img-thumbnail  card-image " src="/media/Credit-Card-logos.png" alt="">
+			</div>
+
+	</footer>
 	{% block postloadjs %}
 	{% endblock %}
-
 </body>
 
 </html>
