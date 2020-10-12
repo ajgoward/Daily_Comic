@@ -61,8 +61,44 @@
 						<a class="dropdown-item" href="{% url 'products' %}">All Products</a>
 					</div>
 				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="{% url 'products' %}?category=Graphic_Novels,Comics">Graphic Novels</a>
+				<li class="nav-item dropdown ">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true">
+						Books
+					</a>
+					<div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                    <div class="dropdown-divider"></div>
+						 <h6 class="text-center"><strong>Category</strong></h6>
+                         <div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?category=Graphic_Novels">Graphic Novels</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?category=Comics">Comics</a>
+						<div class="dropdown-divider"></div>
+                    
+                    
+                     <div class="dropdown-divider"></div>
+						 <h6 class="text-center"><strong>Universe</strong></h6>
+                         <div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=DC&category=Graphic_Novels,Comics">DC</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=Marvel&category=Graphic_Novels,Comics">Marvel</a>
+						<div class="dropdown-divider"></div>
+                    
+                    
+						<h6 class="text-center"><strong>Hero</strong></h6>
+                        <div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=Spider&category=Graphic_Novels,Comics">Spider-Man</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=Venom&category=Graphic_Novels,Comics">Venom</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=superman&category=Graphic_Novels,Comics">Superman</a>
+                            <a class="dropdown-item"
+							href="{% url 'products' %}?qset=batman&category=Graphic_Novels,Comics">Batman</a>
+                  
+					</div>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'products' %}?category=Toys">Toys</a>
@@ -159,11 +195,12 @@
 					<li><a class=" text-white " href="{% url 'account_login' %}">Sign In</a></li>
 					<li><a class=" text-white " href="{% url 'account_signup' %}">Register</a></li>
 					{% endif %}
-					<li><a  class=" text-white " href="{% url 'products' %}">All Products</a></li>
-					<li><a  class=" text-white " href="#">Subscriptions</a></li>
+					<li><a class=" text-white " href="{% url 'products' %}">All Products</a></li>
+					<li><a class=" text-white " href="#">Subscriptions</a></li>
 					<li><a class=" text-white " href="{% url 'products' %}?category=Merchandise">Merch</a></li>
 					<li><a class=" text-white " href="{% url 'products' %}?category=Toys">Toys</a></li>
-					<li><a class=" text-white " href="{% url 'products' %}?category=Graphic_Novels,Comics">Graphic Novels</a></li>
+					<li><a class=" text-white " href="{% url 'products' %}?category=Graphic_Novels,Comics">Graphic
+							Novels</a></li>
 				</ul>
 			</div>
 			<div class="col">
@@ -173,6 +210,7 @@
 
 	</footer>
 	{% block postloadjs %}
+
 	{% endblock %}
 </body>
 

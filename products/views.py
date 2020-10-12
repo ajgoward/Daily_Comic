@@ -11,8 +11,14 @@ def all_stock(request):
     categories = None
     sort = None
     direction = None
+    queryset = None
 
     if request.GET:
+
+        if 'qset' in request.GET:
+            queryset = request.GET['qset']
+            thequery = Q(universe__contains=queryset) | Q(hero__icontains=queryset)
+            products = products.filter(thequery)
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey

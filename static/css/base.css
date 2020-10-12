@@ -83,6 +83,11 @@ a.text-white{
     
 }
 
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
 html {
     height: 100%;
 }
@@ -155,7 +160,10 @@ h1{
     font-size: 20px;
     width: auto;
   }
-  
+  .navbar{ padding-top: 0; padding-bottom: 0; }
+	.navbar .has-megamenu{position:static!important;}
+	.navbar .megamenu{left:0; right:0; width:100%; padding:20px;  }
+	.navbar .nav-link{ padding-top:1rem; padding-bottom:1rem;  }
 }
 
 .home-button {
@@ -193,3 +201,4 @@ h1{
 .product-image{
   max-width: 70%;
 }
+
