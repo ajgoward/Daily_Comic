@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block content %}
- {% for c in current_categories %}
+
 <div class="hero-image1">
 	<div class="hero-text">
-    <h1> Products
-   
+    <h1> Products</h1>
+    {% for c in current_categories %}
         <h1>- {{ c.friendly_name }}</h1>
   
     
