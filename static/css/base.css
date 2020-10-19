@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display&display=swap');
 
+/* general styling */
+html {
+    height: 100%;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+h1{
+    font-family: 'Bangers';
+    font-size: 80px;
+}
+
+/* navbar styling */
+
 .navbar-dark .navbar-nav .nav-link {
     color: #ffff;
     padding-right: 3rem !important;
@@ -35,13 +52,7 @@
     padding-right: 40px;
 }
 
-footer {
-    background-color: #081B19;
-    min-height: 120px;
-    width: -webkit-fill-available;
-    
-    
-}
+
 .wrapper {
   
   min-height: 60vh;
@@ -49,6 +60,14 @@ footer {
 }
 
 /* footer styling */
+
+footer {
+    background-color: #081B19;
+    min-height: 120px;
+    width: -webkit-fill-available;
+    
+    
+}
 
 #footer-details{
     padding: 20px;
@@ -94,19 +113,12 @@ a.category-badge > span.badge:hover {
     color: #fff !important;
 }
 
-html {
-    height: 100%;
-}
-body, html {
-  height: 100%;
-  margin: 0;
-}
+/* home styling */
 
-h1{
-      font-family: 'Bangers';
-  font-size: 80px;
+.welcome-head {
+    color: #ffff;
+    font-family: 'Bangers';
 }
-
 /*recied from w3 schools */
 .bg {
   /* The image used */
@@ -121,6 +133,7 @@ h1{
   background-size: cover;
 }
 
+/* main heading styling */
 .hero-image1 {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/media/street.jpg");
@@ -146,31 +159,7 @@ h1{
   color: white;
 }
 
-@media only screen and (max-width: 1024px) {
-  .bg {
-  background-image: url("/media/street.jpg");
-  
-  }
-  .welcome{
-      padding-right: 100px;
-  }
 
-  .search{
-    margin-left: 0;
-}
-  h1{
-      font-size: 40px;
-  }
-
-  .social-buttons{
-    font-size: 20px;
-    width: auto;
-  }
-  .navbar{ padding-top: 0; padding-bottom: 0; }
-	.navbar .has-megamenu{position:static!important;}
-	.navbar .megamenu{left:0; right:0; width:100%; padding:20px;  }
-	.navbar .nav-link{ padding-top:1rem; padding-bottom:1rem;  }
-}
 
 .home-button {
     font-size: 40px;
@@ -179,11 +168,8 @@ h1{
     font-family: 'PlayFair';
 }
 
-.welcome-head {
-    color: #ffff;
-    font-family: 'Bangers';
-}
 
+/* product page styling */
 
 .product-text{
      font-family: 'Playfair';
@@ -208,3 +194,27 @@ h1{
   max-width: 70%;
 }
 
+
+
+
+@media only screen and (max-width: 1024px) {
+  .bg {
+  background-image: url("/media/street.jpg");
+  
+  }
+  .welcome{
+      padding-right: 100px;
+  }
+
+  .search{
+    margin-left: 0;
+}
+  h1{
+      font-size: 40px;
+  }
+
+  .social-buttons{
+    font-size: 20px;
+    width: auto;
+  }
+}
