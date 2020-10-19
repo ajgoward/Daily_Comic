@@ -17,21 +17,23 @@ def all_stock(request):
 
         if 'qset' in request.GET:
             queryset = request.GET['qset']
-            thequery = Q(universe__contains=queryset) | Q(hero__icontains=queryset)
+            thequery = Q(
+                universe__contains=queryset) | Q(hero__icontains=queryset)
             products = products.filter(thequery)
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
+                products = products.annotate(
+                    lower_name=Lower('name'))
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-            
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -40,10 +42,12 @@ def all_stock(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'

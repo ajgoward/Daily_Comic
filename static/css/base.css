@@ -40,6 +40,12 @@ footer {
     min-height: 120px;
     width: -webkit-fill-available;
     
+    
+}
+.wrapper {
+  
+  min-height: 60vh;
+  
 }
 
 /* footer styling */
