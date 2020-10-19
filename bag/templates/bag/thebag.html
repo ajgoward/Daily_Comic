@@ -8,25 +8,67 @@
 {% block content %}
 <div class="hero-image1">
 	<div class="hero-text">
-    <h1> Shopping Bag</h1>
+		<h1> Shopping Basket</h1>
 	</div>
 </div>
-<div class="wrapper">
-<div class="row">
-<div class="col">
-{% if basket_items %}
-<div class="table-responsive">
-  <table class="table">
-   {{ basket_items }}
-  </table>
-</div>
-{% else %}
-<div class="text-center mt-3">
-<h1 class="">Looks like your Basket is empty</h1>
-<a href="{% url 'products' %}" class=""><button type="button" class="btn btn-warning btn-lg home-button shadow-lg text-center">Continue Shopping!</button></a>
+<div class="wrapper container mt-3">
+	<div class="row">
+		<div class="col">
+			{% if basket_items %}
+			{% for item in basket_items %}
+
+
+			<ul class="list-unstyled">
+				<li class="media">
+					<img src="{{ item.product.image.url }}" class="mr-3" alt="...">
+					<div class="media-body product-text">
+						<h5 class="mt-0 mb-1 product-title">{{ item.product.name }}</h5>
+						<h5 class="mt-0 mb-1"><small class="text-muted">SKU: {{ item.product.sku|upper }}</small></h5>
+						<h5 class="mt-0 mb-1"><strong>Price:</strong> £{{ item.product.price }}</h5>
+						<h5 class="mt-0 mb-1"><strong>Quantity:</strong> {{ item.quantity }}</h5>
+						{% if item.product.has_sizes %}
+						<h5 class="mt-0 mb-1"><strong>Size:</strong> {{ item.size|upper }}</h5>
+						{% endif %}
+						<h5 class="mt-0 mb-1"><strong>Subtotal:</strong> £{{ item.product.price }}</h5>
+
+					</div>
+				</li>
+				<br>
+  {% endfor %}
+  </ul>
+		</div>
+		<div class="col-12">
+			<div class="card mb-4 ">
+				<div class="card-body text-center bag-text">
+					<h5 class="mt-0 mb-1"><strong>Bag Total:</strong> £ {{ total|floatformat:2 }}</h5>
+					<h5 class="mt-0 mb-1"><strong>Delivery:</strong> £ {{ delivery|floatformat:2 }}</h5>
+					<h5 class="mt-0 mb-1"><strong>Grand Total:</strong> £ {{ grand_total|floatformat:2 }}</h5>
+					{% if free_delivery_delta > 0 %}
+					<p class="mb-1 text-danger">
+						You could get free delivery by spending just <strong>£ {{ free_delivery_delta }}</strong> more!
+					</p>
+					{% endif %}
+					<div class="card-text mt-3">
+						<a href="{% url 'products' %}"
+							class="text-decoration-none  btn-lg btn-warning produtPageButton mb-3 mr-3 ">Continue
+							shopping</a>
+						<br>
+						<a href="{% url 'products' %}"
+							class="text-decoration-none  btn-lg btn-warning produtPageButton mb-3 mr-3 ">Secure
+							Checkout</a></div>
+				</div>
+			</div>
+		</div>
+
+		{% else %}
+		<div class="text-center mt-3">
+			<h1 class="">Looks like your Basket is empty</h1>
+			<a href="{% url 'products' %}"
+				class=""><button type="button" class="btn btn-warning btn-lg home-button shadow-lg text-center">Continue Shopping!</button></a>
+		</div>
+
+		{% endif %}
+	</div>
 </div>
 
-{% endif %}
-</div></div>
-</div>
 {% endblock %}
