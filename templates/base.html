@@ -62,7 +62,7 @@
 					</div>
 				</li>
 				<li class="nav-item dropdown ">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
 						data-toggle="dropdown" aria-haspopup="true">
 						Books
 					</a>
@@ -129,7 +129,7 @@
 			</ul>
 		</div>
 		<li class="list-inline-item">
-			<a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'see_the_bag' %}">
+			<a class="text-info font-weight-bold nav-link" href="{% url 'see_the_bag' %}">
 				<div class="text-center shopping">
 					<div><i class="fas fa-shopping-cart "></i></div>
 					<p class="my-0">
@@ -170,7 +170,9 @@
 	{% block content %}
 	{% endblock %}
 
+{% block postloadjs %}
 
+	{% endblock %}
 	<!-------footer-->
 	<footer>
 		<div class="row container-fluid">
@@ -207,11 +209,8 @@
 				<h5 class="footer-links mt-2">We Accept All Major Cards</h5>
 				<img class="img-thumbnail  card-image " src="/media/Credit-Card-logos.png" alt="">
 			</div>
-
+		</div>
 	</footer>
-	{% block postloadjs %}
-
-	{% endblock %}
 </body>
 
 </html>
