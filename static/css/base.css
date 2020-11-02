@@ -188,6 +188,7 @@ a.category-badge > span.badge:hover {
     border-radius: 20px;
     font-family: 'Bangers';
     font-size: 20px;
+    cursor: pointer;
 }
 
 .product-image{
@@ -200,6 +201,14 @@ a.category-badge > span.badge:hover {
     font-family: 'Playfair';
     font-size: 40px;
 
+}
+
+.basket-image{
+     width: 250px;
+     height: 300px;
+     background-position: 50% 50%;
+     background-repeat: no-repeat;
+     background-size: cover;
 }
 
 
@@ -226,5 +235,10 @@ a.category-badge > span.badge:hover {
 
   .bask-title{
       font-size: 20px;
+  }
+
+  .basket-image{
+      height: 200px;
+      width:150px;
   }
 }
