@@ -80,7 +80,7 @@
                                                 </small>
 										{% endif %}
 										<br>
-                                        <form class="form text-center" action="{% url 'add_to_basket' product.id %}" method="POST">
+                                        <form class="form text-center" action="{% url 'quick_add' product.id %}" method="POST">
                         {% csrf_token %}
                         
 				 <input type="submit"  class="mt-2 btn btn-warning produtPageButton " value="Add To Cart!" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">

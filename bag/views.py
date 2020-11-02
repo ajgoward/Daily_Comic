@@ -9,9 +9,28 @@ def see_the_bag(request):
     return render(request, 'bag/thebag.html')
 
 
+def quick_add(request, item_id):
+    """ for the quick add button on the product page first set
+    the quantity and then change to 1 to add to basket
+    """
+    quantity = 0
+    basket = request.session.get('bag', {})
+    redirect_url = request.POST.get('redirect_url')
+    if quantity == 0:
+        quantity = 1
+
+        if item_id in list(basket.keys()):
+            basket[item_id] += quantity
+        else:
+            basket[item_id] = quantity
+
+    request.session['bag'] = basket
+    return redirect(redirect_url)
+
+
 def add_to_basket(request, item_id):
     """ Add a quantity of the specified product to the shopping basket """
-    quantity = 0
+    quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
 
     size = None
@@ -28,11 +47,6 @@ def add_to_basket(request, item_id):
         else:
             basket[item_id] = {'items_by_size': {size: quantity}}
     else:
-
-        if quantity == 0:
-            quantity = 1
-        else:
-            quantity = int(request.POST.get('quantity'))
 
         if item_id in list(basket.keys()):
             basket[item_id] += quantity
