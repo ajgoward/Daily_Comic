@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load basket_tools %}
 {% block content %}
 <div class="hero-image1">
 	<div class="hero-text">
@@ -21,7 +22,7 @@
 						<h5 class="mt-0 mb-1 product-title">{{ item.product.name }}</h5>
 						<h5 class="mt-0 mb-1"><small class="text-muted">SKU: {{ item.product.sku|upper }}</small></h5>
 						<h5 class="mt-0 mb-1"><strong>Price:</strong> £{{ item.product.price }}</h5>
-						<form class="form update-form" action="" method="POST">
+						<form class="form update-form" action="{% url 'adjust_basket' item.item_id %}" method="POST">
 							{% csrf_token %}
 							<div class="form-row ">
 								<div class="col-12">
@@ -57,13 +58,13 @@
 								<h5 class="mt-0 mb-1"><small class="text-muted">Size: {{ item.size }}</small></h5>
 								{% endif %}
 								{% endwith %}
-								<a class="update-link text-decoration-none  btn-lg btn-warning produtPageButton"><small>Update</small></a>
+								<a class="update-link text-decoration-none  btn-lg btn-warning produtPageButton" id="update-link"><small>Update</small></a>
 								<a class="remove-item text-decoration-none  btn-lg btn-danger produtPageButton" id="remove_{{ item.item_id }}"
 									data-size="{{ item.size }}"><small>Remove</small></a>
 								
 
 							</div>
-                            <h5 class="mt-1 mb-1"><strong>Subtotal:</strong> £{{ item.product.price }}</h5>
+                            <h5 class="mt-1 mb-1"><strong>Subtotal:</strong> £{{ item.product.price | calc_subtotal:item.quantity }}</h5>
 						</form>
 					</div>
 					</div>
@@ -110,5 +111,25 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input.html' %}
+<script type="text/javascript">
+    // Update quantity on click
+    $('#update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
 
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('product_size');
+        var url = `/bag/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}

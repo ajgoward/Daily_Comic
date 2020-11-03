@@ -19,9 +19,8 @@
 	{% endblock %}
 
 	{% block corejs %}
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-	</script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
 		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
 	</script>
@@ -67,37 +66,35 @@
 						Books
 					</a>
 					<div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                    <div class="dropdown-divider"></div>
-						 <h6 class="text-center"><strong>Category</strong></h6>
-                         <div class="dropdown-divider"></div>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?category=Graphic_Novels">Graphic Novels</a>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?category=Comics">Comics</a>
 						<div class="dropdown-divider"></div>
-                    
-                    
-                     <div class="dropdown-divider"></div>
-						 <h6 class="text-center"><strong>Universe</strong></h6>
-                         <div class="dropdown-divider"></div>
+						<h6 class="text-center"><strong>Category</strong></h6>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{% url 'products' %}?category=Graphic_Novels">Graphic Novels</a>
+						<a class="dropdown-item" href="{% url 'products' %}?category=Comics">Comics</a>
+						<div class="dropdown-divider"></div>
+
+
+						<div class="dropdown-divider"></div>
+						<h6 class="text-center"><strong>Universe</strong></h6>
+						<div class="dropdown-divider"></div>
 						<a class="dropdown-item"
 							href="{% url 'products' %}?qset=DC&category=Graphic_Novels,Comics">DC</a>
 						<a class="dropdown-item"
 							href="{% url 'products' %}?qset=Marvel&category=Graphic_Novels,Comics">Marvel</a>
 						<div class="dropdown-divider"></div>
-                    
-                    
+
+
 						<h6 class="text-center"><strong>Hero</strong></h6>
-                        <div class="dropdown-divider"></div>
+						<div class="dropdown-divider"></div>
 						<a class="dropdown-item"
 							href="{% url 'products' %}?qset=Spider&category=Graphic_Novels,Comics">Spider-Man</a>
 						<a class="dropdown-item"
 							href="{% url 'products' %}?qset=Venom&category=Graphic_Novels,Comics">Venom</a>
 						<a class="dropdown-item"
 							href="{% url 'products' %}?qset=superman&category=Graphic_Novels,Comics">Superman</a>
-                            <a class="dropdown-item"
+						<a class="dropdown-item"
 							href="{% url 'products' %}?qset=batman&category=Graphic_Novels,Comics">Batman</a>
-                  
+
 					</div>
 				</li>
 				<li class="nav-item">
@@ -170,7 +167,7 @@
 	{% block content %}
 	{% endblock %}
 
-{% block postloadjs %}
+	{% block postloadjs %}
 
 	{% endblock %}
 	<!-------footer-->
@@ -209,7 +206,7 @@
 				<h5 class="footer-links mt-2">We Accept All Major Cards</h5>
 				<img class="img-thumbnail  card-image " src="/media/Credit-Card-logos.png" alt="">
 			</div>
-		</div>
+			</div>
 	</footer>
 </body>
 
