@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, HttpResponseRedirect)
+
 
 # Create your views here.
 
@@ -15,7 +17,6 @@ def quick_add(request, item_id):
     """
     quantity = 0
     basket = request.session.get('bag', {})
-    redirect_url = request.POST.get('redirect_url')
     if quantity == 0:
         quantity = 1
 
@@ -25,7 +26,11 @@ def quick_add(request, item_id):
             basket[item_id] = quantity
 
     request.session['bag'] = basket
-    return redirect(redirect_url)
+    """recieved this from stackoverflow
+    https://stackoverflow.com/questions/12758786/redirect-return-to-same-previous-page-in-django
+    to redirect to page the user
+    was one origionally instead of going back to default product page"""
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def add_to_basket(request, item_id):
@@ -54,4 +59,3 @@ def add_to_basket(request, item_id):
 
     request.session['bag'] = basket
     return redirect(redirect_url)
-
