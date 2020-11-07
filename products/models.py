@@ -38,3 +38,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class Reviews(models.Model):
+    product = models.ForeignKey(
+        'Product', null=True, blank=True, on_delete=models.SET_NULL)
+    name = models.CharField(max_length=254)
+    rating = models.IntegerField(blank=True)
+    description = models.TextField()
