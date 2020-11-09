@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category
+from .models import Product, Category, Reviews
 
 
 def all_stock(request):
@@ -61,8 +61,10 @@ def all_stock(request):
 def item_detail(request, product_id):
     """ A veiw to show individual items """
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Reviews.objects.filter(product=product_id)
     context = {
         'product': product,
+        'reviews': reviews
     }
 
     return render(request, 'products/item-detail.html', context)
