@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'subscriptions',
+    'crispy_forms',
     # allauth
     'django.contrib.sites',
 
@@ -80,7 +81,12 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'bag.contexts.basket_contents',
             ],
-        },
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+                ]
+            },
+
     },
 ]
 
