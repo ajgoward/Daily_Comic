@@ -5,9 +5,9 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-        
+
     name = models.CharField(max_length=254)
-    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    friendly_name = models.CharField(max_length=254, blank=True)
 
     def __str__(self):
         return self.name
@@ -44,7 +44,7 @@ class Reviews(models.Model):
     product = models.ForeignKey(
         'Product', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
-    rating = models.IntegerField(blank=True)
+    rating = models.IntegerField(blank=False)
     description = models.TextField()
 
     def __str__(self):
