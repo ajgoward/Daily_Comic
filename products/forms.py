@@ -6,5 +6,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Reviews
-        fields = ('name', 'rating', 'description')
+        fields = ('__all__')
+
+        
 

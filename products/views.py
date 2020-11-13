@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category, Reviews
@@ -71,3 +71,16 @@ def item_detail(request, product_id):
     }
 
     return render(request, 'products/item-detail.html', context)
+
+
+def Add_Review(request):
+    """ Add a product to the store """
+
+    if request.method == 'POST':
+
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added product!')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
