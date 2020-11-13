@@ -149,6 +149,21 @@ a.category-badge > span.badge:hover {
  
 }
 
+.card-header{
+     background-color: #081B19 !important;
+     text-align: center !important;
+}
+
+.card-heading{
+    color: white;
+    font-family: 'Bangers';
+    font-size: 40px;
+
+}
+
+.card-heading:hover{
+    color:  #ffc107;
+}
 /* Place text in the middle of the image */
 .hero-text {
   text-align: center;
@@ -191,6 +206,13 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+.produtPageButton:hover{
+    background-color: #081B19;
+}
+
+.form-group select{
+    -webkit-appearance:none;
+}
 .product-image{
   max-width: 70%;
 }

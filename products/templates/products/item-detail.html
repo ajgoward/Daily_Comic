@@ -30,10 +30,10 @@
     <div class="col-sm mb-5">
       <div id="accordion">
         <div class="card mt-4 mt-sm-none">
-          <div class="card-header" id="headingOne">
+          <div class="card-header " id="headingOne">
             <h5 class="mb-0">
               <button
-                class="btn btn-link text-decoration-none product-title"
+                class="btn btn-link text-decoration-none card-heading"
                 data-toggle="collapse"
                 data-target="#collapseOne"
                 aria-expanded="true"
@@ -58,8 +58,7 @@
                   class="text-muted"
                   href="{% url 'products' %}?category={{ product.category.name }}"
                 >
-                  <i class="fas fa-tag mr-1"></i>{{
-                  product.category.friendly_name }}
+                  <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
                 </a>
               </p>
               {% endif %} {% if product.rating %}
@@ -101,7 +100,7 @@
           <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
               <button
-                class="btn btn-link collapsed text-decoration-none product-title"
+                class="btn btn-link collapsed text-decoration-none card-heading"
                 data-toggle="collapse"
                 data-target="#collapseTwo"
                 aria-expanded="false"
@@ -221,9 +220,9 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <h5 class="modal-title product-title " id="exampleModalLabel">Add Review</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -237,14 +236,10 @@
                        
                   
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Product</button>
+                        <a class="text-decoration-none  btn btn-danger produtPageButton" data-dismiss="modal" >Cancel</a>
+                        <button class="text-decoration-none  btn btn-warning produtPageButton" type="submit">Add Review</button>
                     </div>
                 </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -255,13 +250,13 @@
      
       <div class="card mb-3">
         <div class="card-header">
-          <div class="row product-title text-center">
+          <div class="row card-heading">
             <div class="col-6">
               <p class="mt-0 mb-1">
                 <i class="far fa-hand-spock"></i> {{ review.name }}
               </p>
             </div>
-            <div class="col-6">
+            <div class="col-6 rating">
               <i class="fas fa-star-half-alt"></i> {{ review.rating }}/5
             </div>
           </div>
@@ -274,7 +269,7 @@
            </div></div>{% endfor %}
        
         {% else %}
-        <p>no reviews</p>
+        <p class="product-text text-center text-danger text-upper">No Reviews Added, Feel Free To Add Your Own</p>
       
       {% endif %}
     </div>
@@ -287,6 +282,8 @@
 <script>
 $(document).ready(function(){
     $("select option[value={{ product.id }}]").attr('selected', 'selected');
+    $("select[name='product']").attr("disabled", "disabled");
+    $("label").addClass("product-title");
 })
 </script>
 {% endblock %}
