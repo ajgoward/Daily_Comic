@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+
 <div class="hero-image1">
 	<div class="hero-text">
 		<h1>Product Details</h1>
@@ -53,12 +54,13 @@
 									<i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
 								</a>
 							</p>
-							{% endif %} {% if product.rating %}
-							<small class="text-muted"
-                ><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-							{% else %}
-							<small class="text-muted">No Rating</small>
-							{% endif %} {% if product.universe %}
+							{% endif %}
+                          
+							<small class=""
+                ><i class="fas fa-star mr-1"></i>{{ average_rating }} / 5</small>
+             
+                
+						 {% if product.universe %}
 							<p class="mt-1">
 								<strong> Universe: </strong> {{ product.universe }}
 							</p>
@@ -79,7 +81,7 @@
 
 							{% endif %}
 							<p class="lead mb-1 font-weight-bold text-danger">
-								<del>{{ product.rrp }}</del>
+								RRP: <del>{{ product.rrp }}</del>
 							</p>
 							<p class="lead mb-2 font-weight-bold">
 								Our Price: £{{ product.price }}

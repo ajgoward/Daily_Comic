@@ -73,7 +73,6 @@
 										<i class="fas fa-globe-americas"></i> {{ product.universe }}
 									</p>
 									{% endif %}
-									<small class="text-muted small"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
 									{% if request.user.is_superuser %}
 									<small class="ml-3">
                                                     <a href="{% url 'edit_the_product' product.id %}"><i class="fas fa-edit mr-1 text-warning"></i></a> | 
