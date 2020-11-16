@@ -1,5 +1,6 @@
 from django.shortcuts import (
     render, get_object_or_404, redirect, reverse, HttpResponseRedirect)
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category, Reviews
@@ -83,3 +84,9 @@ def Add_Review(request):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def add_a_product(request):
+    template = 'products/add_a_product.html'
+    return render(request, template)
