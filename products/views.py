@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category, Reviews
-from .forms import ReviewForm
+from .forms import ReviewForm, ProductForm
 
 
 def all_stock(request):
@@ -88,5 +88,21 @@ def Add_Review(request):
 
 @login_required
 def add_a_product(request):
+    """ Add a product to the store """
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            return redirect(reverse('item_detail', args=[product.id]))
+    else:
+        form = ProductForm()
+
     template = 'products/add_a_product.html'
-    return render(request, template)
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
