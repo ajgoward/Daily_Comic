@@ -130,3 +130,14 @@ def edit_the_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_the_product(request, product_id):
+    """ Delete a product from the store """
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    return redirect(reverse('products'))
