@@ -83,6 +83,8 @@ def Add_Review(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(
+                request, 'Successfully Added Your Review! Thank You!')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -96,6 +98,7 @@ def add_a_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
+            messages.success(request, 'Successfully added product!')
             return redirect(reverse('item_detail', args=[product.id]))
     else:
         form = ProductForm()
@@ -120,8 +123,13 @@ def edit_the_product(request, product_id):
         if form.is_valid():
             form.save()
             return redirect(reverse('item_detail', args=[product.id]))
+        else:
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
 
     template = 'products/edit_the_product.html'
     context = {
@@ -140,4 +148,5 @@ def delete_the_product(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
+    messages.warning(request, 'Product deleted!')
     return redirect(reverse('products'))

@@ -17,6 +17,7 @@ def quick_add(request, item_id):
     """ for the quick add button on the product page first set
     the quantity and then change to 1 to add to basket
     """
+    product = get_object_or_404(Product, pk=item_id)
     quantity = 0
     basket = request.session.get('bag', {})
     if quantity == 0:
@@ -24,8 +25,12 @@ def quick_add(request, item_id):
 
         if item_id in list(basket.keys()):
             basket[item_id] += quantity
+            messages.success(
+                request,
+                f'Added {product.name} quantity to {basket[item_id]}')
         else:
             basket[item_id] = quantity
+        messages.success(request, f'Added {product.name} to your basket')
 
     request.session['bag'] = basket
     """recieved this from stackoverflow
@@ -38,7 +43,7 @@ def quick_add(request, item_id):
 def add_to_basket(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
 
-    product = Product.objects.get(pk=item_id)
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None
@@ -50,16 +55,26 @@ def add_to_basket(request, item_id):
         if item_id in list(basket.keys()):
             if size in basket[item_id]['items_by_size'].keys():
                 basket[item_id]['items_by_size'][size] += quantity
+                messages.success(
+                    request,
+                    f'Updated size {size.upper()}{product.name} quantity to {basket[item_id]["items_by_size"][size]}'
+                    )
             else:
                 basket[item_id]['items_by_size'][size] = quantity
+                messages.success(
+                    request, f'Added {size.upper()}{product.name} to your bag')
         else:
             basket[item_id] = {'items_by_size': {size: quantity}}
+            messages.success(
+                request, f'Added {size.upper()}{product.name} to you basket')
     else:
         if item_id in list(basket.keys()):
             basket[item_id] += quantity
+            messages.success(
+                request, f'Added {product.name} quantity to {basket[item_id]}')
         else:
             basket[item_id] = quantity
-            messages.success(request, f'Added {product.name} to your bag')
+            messages.success(request, f'Added {product.name} to your basket')
 
     request.session['bag'] = basket
     return redirect(redirect_url)
@@ -67,7 +82,7 @@ def add_to_basket(request, item_id):
 
 def adjust_basket(request, item_id):
     """ addjust the bag quatity"""
-
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     size = None
     if 'product_size' in request.POST:
@@ -77,15 +92,27 @@ def adjust_basket(request, item_id):
     if size:
         if quantity > 0:
             basket[item_id]['items_by_size'][size] = quantity
+            messages.success(
+                request,
+                f'Updated size {size.upper()}{product.name} quantity to {basket[item_id]["items_by_size"][size]}'
+                )
         else:
             del basket[item_id]['items_by_size'][size]
             if not basket[item_id]['items_by_size'][size]:
                 basket.pop(item_id)
+            messages.success(
+                request, f'Removed {size.upper()}{product.name} from your bag')
     else:
         if quantity > 0:
             basket[item_id] = quantity
+            messages.success(
+                request,
+                f'Added {product.name} quantity to {basket[item_id]}')
         else:
             basket.pop(item_id)
+            messages.warning(
+                request,
+                f'Removed {product.name} from your basket')
 
     request.session['bag'] = basket
     return redirect(reverse('see_the_basket'))
@@ -95,6 +122,7 @@ def remove_from_basket(request, item_id):
     """ remove the bag quatity"""
 
     try:
+        product = get_object_or_404(Product, pk=item_id)
         size = None
         if 'product_size' in request.POST:
             size = request.POST['product_size']
@@ -104,10 +132,17 @@ def remove_from_basket(request, item_id):
             del basket[item_id]['items_by_size'][size]
             if not basket[item_id]['items_by_size'][size]:
                 basket.pop(item_id)
+            messages.warning(
+                request,
+                f'Removed {size.upper()}{product.name} from your basket')
         else:
             basket.pop(item_id)
+            messages.warning(
+                request,
+                f'Removed {product.name} from your basket')
 
         request.session['bag'] = basket
         return HttpResponse(status=200)
     except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
