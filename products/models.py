@@ -45,6 +45,7 @@ class Reviews(models.Model):
         'Product', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     rating = models.IntegerField(blank=False)
+    date = models.DateTimeField(auto_now_add=True)
     description = models.TextField()
 
     def __str__(self):
