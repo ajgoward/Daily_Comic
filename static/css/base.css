@@ -11,7 +11,7 @@ body, html {
 }
 
 h1{
-    font-family: 'Bangers';
+    font-family: 'Bangers, sans-serif';
     font-size: 80px;
 }
 
@@ -39,7 +39,7 @@ h1{
     color: #ffff;
     padding-right: 3rem !important;
     padding-left: 3rem !important;
-    font-family: 'Playfair';
+    font-family: 'Playfair, sans-serif';
     font-size: 20px;
     text-align: right;
     
@@ -49,14 +49,14 @@ h1{
     background-color: #081B19 !important;
 }
 .navbar-brand{
-    font-family: 'Bangers';
+    font-family: 'Bangers, sans-serif';
     font-size: 40px;
     padding-right: 40px;
     padding-left: 30px;
 }
 
 .dropdown-item{
-    font-family: 'Playfair';
+    font-family: 'Playfair, sans-serif',;
     font-size: 20px;
 }
 
@@ -114,7 +114,7 @@ footer {
 
 .footer-links{
     color: #fff !important;
-      font-family: 'Playfair';
+      font-family: 'Playfair, sans-serif';
 }
 
 .card-image{
@@ -135,7 +135,7 @@ a.category-badge > span.badge:hover {
 
 .welcome-head {
     color: #ffff;
-    font-family: 'Bangers';
+    font-family: 'Bangers, sans-serif';
 }
 /*recied from w3 schools */
 .bg {
@@ -174,7 +174,7 @@ a.category-badge > span.badge:hover {
 
 .card-heading{
     color: white;
-    font-family: 'Bangers';
+    font-family: 'Bangers, sans-serif';
     font-size: 40px;
 
 }
@@ -198,20 +198,20 @@ a.category-badge > span.badge:hover {
     font-size: 40px;
     color: #ffff;
     border-radius: 20px;
-    font-family: 'PlayFair';
+    font-family: 'PlayFair, sans-serif';
 }
 
 
 /* product page styling */
 
 .product-text{
-     font-family: 'Playfair';
+     font-family: 'Playfair, sans-serif';
     font-size: 20px;
 }
 
 
 .product-title{
-   font-family: 'Bangers';
+   font-family: 'Bangers, sans-serif';
     font-size: 25px;
     color: black !important;
 }
@@ -219,7 +219,7 @@ a.category-badge > span.badge:hover {
 .produtPageButton{
      color: #ffff !important;
     border-radius: 20px;
-    font-family: 'Bangers';
+    font-family: 'Bangers, sans-serif';
     font-size: 20px;
     cursor: pointer;
 }
@@ -251,7 +251,7 @@ a.category-badge > span.badge:hover {
 /* basket styling */
 
 .bag-text{
-    font-family: 'Playfair';
+    font-family: 'Playfair, sans-serif';
     font-size: 40px;
 
 }
