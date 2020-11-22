@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="hero-image1">
+	<div class="hero-text">
+    <h1>Thank You!</h1>
+	</div>
+</div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col text-center mt-5">
+                <p class="product-title">Your order information is below. A confirmation email will be sent to <br>{{ order.email }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-7"></div>
+        </div>
+        <div class="row">
+			<div class="col-12 col-lg-7 ">
+				<a href="{% url 'products' %}" class="btn btn-warning produtPageButton mb-3">
+					<span class="icon mr-2">
+						<i class="fas fa-gifts"></i>
+					</span>
+					<span class="text-uppercase">Now check out the latest deals!</span>
+				</a>
+			</div>
+		</div>
+    </div>
+{% endblock %}
