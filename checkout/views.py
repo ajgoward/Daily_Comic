@@ -16,7 +16,7 @@ import json
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = ''
+        stripe.api_key = 'sk_test_51HptHNEBtTAu5oh89OI3VgiOpfjxLnhbCXuEYbNTYr6A2PY1nWMPhldle3mmnMeDVyeFOADBd8pM4cAz8kFgLCcz009GSt5jlY'
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
@@ -33,8 +33,8 @@ def cache_checkout_data(request):
 
 def checkout(request):
     stripe_public_key = ''
-    stripe_secret_key = ''
-
+    stripe_secret_key = 
+    
     if request.method == 'POST':
         bag = request.session.get('bag', {})
 
@@ -51,7 +51,11 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -73,22 +77,21 @@ def checkout(request):
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found"
+                        "One of the products in your bag wasn't found in our database. "
                         "Please call us for assistance!")
                     )
                     order.delete()
-                    return redirect(reverse('see_the_basket'))
+                    return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(
-                reverse(
-                    'checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        bag = request.session.get('bag', {})
-        if not bag:
+        basket = request.session.get('bag', {})
+        if not basket:
             messages.error(
                 request, "There's nothing in your bag at the moment")
             return redirect(reverse('products'))
