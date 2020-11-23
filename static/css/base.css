@@ -10,6 +10,10 @@ body, html {
   margin: 0;
 }
 
+.background{
+    background-color: black;
+    color: white;
+}
 h1{
     font-family: 'Bangers', sans-serif;
     font-size: 80px;

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'subscriptions/css/subscription.css' %}">
+{% endblock %}
 {% block content %}
 
 <div class="hero-image1">
@@ -8,7 +10,23 @@
     <h1> Subscriptions</h1>
 	</div>
 </div>
-<div class="wrapper">
+<div class="wrapper container text-center">
+{% for sub in subscrip %}
 
+
+<div class="card text-center mb-3 mt-3">
+  <div class="">
+   {% if sub.image %}
+
+  <img src="{{ sub.image.url }}" alt="{{ sub.name }}" class="rounded img-thumbnail img-fluid"  >
+{% endif %}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title product-title">{{ sub.Name }}</h5>
+    <p class="card-text product-text">{{ sub.Description }}</p>
+    <a href="#" class="btn btn btn-warning produtPageButton">£{{ sub.price }} a {{ sub.Recurring }}</a>
+  </div>
+</div>
+{% endfor %}
 </div>
 {% endblock %}
