@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bag',
     'subscriptions',
     'checkout',
+    'profiles',
     'crispy_forms',
     # allauth
     'django.contrib.sites',
