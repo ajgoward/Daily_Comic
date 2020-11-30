@@ -1,3 +1,8 @@
 th{
    font-weight: normal;
 }
+
+.order-history{
+    max-height: 468px;
+    overflow-y: auto;
+}

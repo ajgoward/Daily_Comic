@@ -175,12 +175,21 @@
        
         <div class="row mt-2">
 			<div class="col-12 col-lg-7 text-center">
+            {% if from_profile %}
+            <a href="{% url 'theprofile' %}" class="btn btn-warning produtPageButton mb-3">
+					<span class="icon mr-2">
+						<i class="fas fa-angle-left"></i>
+					</span>
+					<span class="">Back To Profile</span>
+				</a>
+            {% else %}
 				<a href="{% url 'products' %}" class="btn btn-warning produtPageButton mb-3">
 					<span class="icon mr-2">
 						<i class="fas fa-gifts"></i>
 					</span>
 					<span class="">Now check out the latest deals!</span>
 				</a>
+            {% endif %}
 			</div>
 		</div>
     </div>
