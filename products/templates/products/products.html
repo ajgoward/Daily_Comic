@@ -81,6 +81,9 @@
                                                 </small>
 									{% endif %}
 									<br>
+                                    {% if product.is_subscription %}
+                                
+                                    {% else %}
                                         	{% with product.has_sizes as s %}
 					{% if s %}
 									<h6 class="product-text text-muted small">Please select size before ordering</h6>
@@ -95,6 +98,7 @@
                  </form>
 										{% endif %}
 										{% endwith %}
+                                        {% endif %}
 								</div>
 							</div>
 						</div>
@@ -121,6 +125,7 @@
 		</div>
 		{% endif %}
 		{% endfor %}
+       
 	</div>
 </div>
 

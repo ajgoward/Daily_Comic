@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.contrib import messages
 from django.conf import settings
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -29,8 +31,6 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-
-
 
 
 def checkout(request):
@@ -103,9 +103,9 @@ def checkout(request):
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-        )
+                amount=stripe_total,
+                currency=settings.STRIPE_CURRENCY,
+            )
 
         # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
@@ -168,7 +168,7 @@ def checkout_success(request, order_number):
             user_profile_form = ProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-    
+ 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')

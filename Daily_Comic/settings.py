@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'eag^z%ov8pj@*uw-ez&h(g42ti7af=rendh#vh4+s*elw_+-(y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dailycomic1.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -41,7 +42,6 @@ INSTALLED_APPS = [
     'home',
     'products',
     'bag',
-    'subscriptions',
     'checkout',
     'profiles',
     'crispy_forms',
@@ -128,12 +128,18 @@ WSGI_APPLICATION = 'Daily_Comic.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+
 
 
 # Password validation
@@ -182,4 +188,6 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 FREE_DELIVERY_THRESHOLD = 20
 
 STRIPE_CURRENCY = 'gbp'
-
+STRIPE_PUBLIC_KEY = 'pk_test_51HptHNEBtTAu5oh8FO4YiWprWiIgHBnnShHEcM0RvJUkRiA99IVY9quIcfON8VsYRiYm15jRGSe5MMljDJDe81ei00gPRzZPlP'
+STRIPE_SECRET_KEY = 'sk_test_51HptHNEBtTAu5oh89OI3VgiOpfjxLnhbCXuEYbNTYr6A2PY1nWMPhldle3mmnMeDVyeFOADBd8pM4cAz8kFgLCcz009GSt5jlY'
+STRIPE_WH_SECRET = 'whsec_nxbMsC3tSVTj9Ql9YQjS5dbDsaXSx1oR'

@@ -7,6 +7,7 @@
 </div>
 <div class="container">
 	<div class="row justify-content-md-center">
+   
 		<div class="col-sm">
 			<div class="image-container my-5">
 				{% if product.image %}
@@ -178,13 +179,29 @@
 					<a href="{% url 'products' %}"
 						class="text-decoration-none mt-2 btn btn-warning produtPageButton mb-3 mr-3">Continue
 						shopping</a>
+                         {% if product.is_subscription %}
+                         {% if request.user.is_authenticated %}
+                         	<input
+            type="submit"
+            class="mt-2 btn btn-warning produtPageButton mb-3"
+            value="Add To Cart!"
+          />
+					<input type="hidden" id="checkout" name="redirect_url" value="{{ request.path }}" />
+        </div>
+        {% else %}
+        <a href="{% url 'account_login' %}"
+						class="text-decoration-none mt-2 btn btn-danger produtPageButton mb-3 mr-3">Please  Login/register to order this product</a>
+    </div>
+    {% endif %}
+    {% else %}
+                      
 					<input
             type="submit"
             class="mt-2 btn btn-warning produtPageButton mb-3"
             value="Add To Cart!"
           />
 					<input type="hidden" name="redirect_url" value="{{ request.path }}" />
-        </div>
+        </div>  {% endif %}
 			</form>
 		</div>
 	</div>
