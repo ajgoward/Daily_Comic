@@ -1,1 +1,1 @@
-web: gunicorn DAILY_COMIC.wsgi:application
+web: gunicorn Daily_Comic.wsgi:application
