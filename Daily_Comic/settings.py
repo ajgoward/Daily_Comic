@@ -12,7 +12,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from os import path
 import dj_database_url
+
+if path.exists('env.py'):
+    import env
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +33,8 @@ SECRET_KEY = 'eag^z%ov8pj@*uw-ez&h(g42ti7af=rendh#vh4+s*elw_+-(y'
 DEBUG = True
 
 ALLOWED_HOSTS = ['dailycomic1.herokuapp.com', 'localhost']
+
+
 
 
 # Application definition
@@ -213,6 +220,8 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 FREE_DELIVERY_THRESHOLD = 20
 
 STRIPE_CURRENCY = 'gbp'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
+
+print(STRIPE_PUBLIC_KEY)

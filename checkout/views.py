@@ -36,7 +36,7 @@ def cache_checkout_data(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    
+
     if request.method == 'POST':
         bag = request.session.get('bag', {})
 
@@ -107,7 +107,8 @@ def checkout(request):
                 currency=settings.STRIPE_CURRENCY,
             )
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+        # Attempt to prefill the form with any info the
+        #  user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = Userprofiles.objects.get(user=request.user)
@@ -168,7 +169,7 @@ def checkout_success(request, order_number):
             user_profile_form = ProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
- 
+
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
