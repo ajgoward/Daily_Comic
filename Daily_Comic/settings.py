@@ -32,7 +32,7 @@ SECRET_KEY = 'eag^z%ov8pj@*uw-ez&h(g42ti7af=rendh#vh4+s*elw_+-(y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dailycomic1.herokuapp.com', 'dailycomic2.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['dailycomic1.herokuapp.com', 'dailycomic2.herokuapp.com', 'localhost']
 
 
 
