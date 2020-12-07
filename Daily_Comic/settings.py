@@ -103,8 +103,16 @@ TEMPLATES = [
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {},
-    'google': {}}
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 

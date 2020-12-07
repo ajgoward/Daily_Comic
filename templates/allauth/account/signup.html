@@ -14,7 +14,7 @@
 {% block inner_content %}
 
 
-<p class="product-text">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<p class="product-text">{% blocktrans %}Already have an account or want to sign up with google or facebook? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
 <form class="signup product-title" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
