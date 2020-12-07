@@ -24,8 +24,6 @@
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                 <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                                 <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
-                                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
                             </select>
 			</div>
 		</div>
@@ -57,6 +55,7 @@
 							<div class="row">
 								<div class="col">
 									<p class="mt-3 product-title">{{ product.name }}</p>
+                                 
 									<p class="lead mb-1  font-weight-bold text-danger"><del>RRP:
 											£{{ product.rrp }}</del></p>
 									<p class="lead mb-2  font-weight-bold">Our Price: £{{ product.price }}</p>
