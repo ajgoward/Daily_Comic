@@ -57,7 +57,8 @@ def add_to_basket(request, item_id):
                 basket[item_id]['items_by_size'][size] += quantity
                 messages.success(
                     request,
-                    f'Updated size {size.upper()}{product.name} quantity to {basket[item_id]["items_by_size"][size]}'
+                    f'Updated size {size.upper()}{product.name} quantity to \
+                         {basket[item_id]["items_by_size"][size]}'
                     )
             else:
                 basket[item_id]['items_by_size'][size] = quantity
@@ -94,7 +95,8 @@ def adjust_basket(request, item_id):
             basket[item_id]['items_by_size'][size] = quantity
             messages.success(
                 request,
-                f'Updated size {size.upper()}{product.name} quantity to {basket[item_id]["items_by_size"][size]}'
+                f'Updated size {size.upper()}{product.name} quantity to \
+                    {basket[item_id]["items_by_size"][size]}'
                 )
         else:
             del basket[item_id]['items_by_size'][size]

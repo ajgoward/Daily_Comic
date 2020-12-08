@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display&display=swap');
+
+/* stripe css */
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -52,6 +54,8 @@ select option[value=""] {
     color: #000;
     border: 0.5px solid #000;
 }
+
+/* overlay css */
 
 #loading-overlay {
 	display: none;
