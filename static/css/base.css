@@ -40,14 +40,22 @@ h1{
 }
 /* navbar styling */
 
-.navbar-dark .navbar-nav .nav-link {
-    color: #ffff;
+.nav-link{
+    color:white !important;
+    font-family: 'Playfair',sans-serif !important;
+    font-size: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.nav-item{
+     color: #ffff !important!;
     padding-right: 3rem !important;
     padding-left: 3rem !important;
     font-family: 'Playfair',sans-serif;
     font-size: 20px;
-    text-align: right;
-    
 }
 
 .bg-dark{
@@ -58,6 +66,7 @@ h1{
     font-size: 40px;
     padding-right: 40px;
     padding-left: 30px;
+    color: white;
 }
 
 .dropdown-item{
@@ -65,9 +74,7 @@ h1{
     font-size: 20px;
 }
 
-.search{
-    margin-left: 30rem;
-}
+
 
 .shopping{
     font-size: 30px;

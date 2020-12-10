@@ -1,0 +1,81 @@
+<div class="collapse navbar-collapse b" id="main-nav">
+    <ul class="navbar-nav navbar-dark w-auto mx-auto text-white">
+        <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						All Products
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">By Price</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{% url 'products' %}">All Products</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown ">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+						data-toggle="dropdown" aria-haspopup="true">
+						Books
+					</a>
+					<div class="dropdown-menu " aria-labelledby="navbarDropdown">
+						<div class="dropdown-divider"></div>
+						<h6 class="text-center product-title">Category</h6>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{% url 'products' %}?category=Graphic_Novels">Graphic Novels</a>
+						<a class="dropdown-item" href="{% url 'products' %}?category=Comics">Comics</a>
+						<div class="dropdown-divider"></div>
+
+
+						<div class="dropdown-divider"></div>
+						<h6 class="text-center product-title">Universe</h6>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=DC&category=Graphic_Novels,Comics">DC</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=Marvel&category=Graphic_Novels,Comics">Marvel</a>
+						<div class="dropdown-divider"></div>
+
+
+						<h6 class="text-center product-title">Hero</h6>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=Spider&category=Graphic_Novels,Comics">Spider-Man</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=Venom&category=Graphic_Novels,Comics">Venom</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=superman&category=Graphic_Novels,Comics">Superman</a>
+						<a class="dropdown-item"
+							href="{% url 'products' %}?qset=batman&category=Graphic_Novels,Comics">Batman</a>
+
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'products' %}?category=Toys">Toys</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'products' %}?category=Merchandise">Merch</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'products' %}?category=Subscriptions">Subscriptions</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Profile
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+						{% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                                    <a href="{% url 'add_a_product' %}" class="dropdown-item">Product Management</a>
+                                {% endif %}
+						<a class="dropdown-item" href="{% url 'theprofile' %}">Profile</a>
+						<a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
+						{% else %}
+						<a class="dropdown-item" href="{% url 'account_login' %}">Sign In</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
+						{% endif %}
+					</div>
+				</li>
+
+    </ul>
+</div>

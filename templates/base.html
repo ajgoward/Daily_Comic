@@ -39,96 +39,30 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-		<a class="navbar-brand" href="{% url 'home' %}">Daily Comic</a>
-
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-		<div class="collapse navbar-collapse " id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto justify-content-center">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						All Products
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">By Price</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{% url 'products' %}">All Products</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown ">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-						data-toggle="dropdown" aria-haspopup="true">
-						Books
-					</a>
-					<div class="dropdown-menu " aria-labelledby="navbarDropdown">
-						<div class="dropdown-divider"></div>
-						<h6 class="text-center"><strong>Category</strong></h6>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{% url 'products' %}?category=Graphic_Novels">Graphic Novels</a>
-						<a class="dropdown-item" href="{% url 'products' %}?category=Comics">Comics</a>
-						<div class="dropdown-divider"></div>
-
-
-						<div class="dropdown-divider"></div>
-						<h6 class="text-center"><strong>Universe</strong></h6>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?qset=DC&category=Graphic_Novels,Comics">DC</a>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?qset=Marvel&category=Graphic_Novels,Comics">Marvel</a>
-						<div class="dropdown-divider"></div>
-
-
-						<h6 class="text-center"><strong>Hero</strong></h6>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?qset=Spider&category=Graphic_Novels,Comics">Spider-Man</a>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?qset=Venom&category=Graphic_Novels,Comics">Venom</a>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?qset=superman&category=Graphic_Novels,Comics">Superman</a>
-						<a class="dropdown-item"
-							href="{% url 'products' %}?qset=batman&category=Graphic_Novels,Comics">Batman</a>
-
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{% url 'products' %}?category=Toys">Toys</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{% url 'products' %}?category=Merchandise">Merch</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{% url 'products' %}?category=Subscriptions">Subscriptions</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Profile
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-						{% if request.user.is_authenticated %}
-                        {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_a_product' %}" class="dropdown-item">Product Management</a>
-                                {% endif %}
-						<a class="dropdown-item" href="{% url 'theprofile' %}">Profile</a>
-						<a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
-						{% else %}
-						<a class="dropdown-item" href="{% url 'account_login' %}">Sign In</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
-						{% endif %}
-					</div>
-				</li>
-
-			</ul>
-		</div>
-		<li class="list-inline-item">
+	 <header class="container-fluid ">
+        <div id="topnav" class="row bg-dark pt-lg-2 d-none d-lg-flex">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                <a href="{% url 'home' %}" class="nav-link navbar-brand">
+                    <h1 class="navbar-brand">Daily Comic</h1>
+                </a>
+            </div>
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0  search">
+                <form method="GET" action="{% url 'products' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control  rounded-0" type="text" name="q" placeholder="Search our site">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-warning rounded-4" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                   <li class="list-inline-item">
 			<a class="text-info font-weight-bold nav-link" href="{% url 'see_the_basket' %}">
 				<div class="text-center shopping">
 					<div><i class="fas fa-shopping-cart "></i></div>
@@ -142,23 +76,20 @@
 				</div>
 			</a>
 		</li>
-	</nav>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-		<div class="col-12 col-lg-4 my-auto py-1 py-lg-0  search">
-			<form method="GET" action="">
-				<div class="input-group w-100">
-					<input class="form-control  rounded-4" type="text" name="q" placeholder="Search....">
-					<div class="input-group-append">
-						<button class="form-control btn btn-warning  border  rounded-4 " type="submit">
-                                <span class="icon">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</nav>
+                </ul>
+            </div>
+        </div>
+        <div class="row bg-dark text-center">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark w100">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+               {% include 'includes/mobile-head.html' %}
+                {% include 'includes/main-nav.html' %}
+            </nav>
+        </div>
+    </header>
+
 
 	{% if messages %}
 	<div class="message-container">
@@ -214,7 +145,7 @@
 					<li><a class=" text-white " href="{% url 'account_signup' %}">Register</a></li>
 					{% endif %}
 					<li><a class=" text-white " href="{% url 'products' %}">All Products</a></li>
-					<li><a class=" text-white " href="#">Subscriptions</a></li>
+					<li><a class=" text-white " href="{% url 'products' %}?category=Subscriptions">Subscriptions</a></li>
 					<li><a class=" text-white " href="{% url 'products' %}?category=Merchandise">Merch</a></li>
 					<li><a class=" text-white " href="{% url 'products' %}?category=Toys">Toys</a></li>
 					<li><a class=" text-white " href="{% url 'products' %}?category=Graphic_Novels,Comics">Graphic
