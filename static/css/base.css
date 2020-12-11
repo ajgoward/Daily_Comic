@@ -51,7 +51,7 @@ h1{
 }
 
 .nav-item{
-     color: #ffff !important!;
+    color: #ffff !important;
     padding-right: 3rem !important;
     padding-left: 3rem !important;
     font-family: 'Playfair',sans-serif;
@@ -70,7 +70,7 @@ h1{
 }
 
 .dropdown-item{
-    font-family: 'Playfair',sans-serif,;
+    font-family: 'Playfair',sans-serif;
     font-size: 20px;
 }
 
