@@ -99,7 +99,7 @@ form.addEventListener('submit', function(ev) {
                     <span class="icon" role="alert">
                     <i class="fas fa-times"></i>
                     </span>
-                    <span class="product-title">${result.error.message}</span>`;
+                    <span>${result.error.message}</span>`;
                 $(errorDiv).html(html);
                 $('#payment-form').fadeToggle(100);
                 $('#loading-overlay').fadeToggle(100);
@@ -114,6 +114,5 @@ form.addEventListener('submit', function(ev) {
     }).fail(function () {
         // just reload the page, the error will be in django messages
         location.reload();
-    });
+    })
 });
-
