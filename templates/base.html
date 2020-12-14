@@ -44,7 +44,7 @@
   </a>
   
 </div>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark ">
   <!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
   <div class="navbar-toggler-right">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,24 +129,46 @@
                     
 				</li>
     </ul>
-    <ul class="navbar-nav justify-content-center text-center w-100 bg-secondary px-3 bg-dark"></ul>
-<li class="list-inline-item">
-			<a class="text-info font-weight-bold nav-link" href="{% url 'see_the_basket' %}">
-				<div class="text-center shopping">
-					<div><i class="fas fa-shopping-cart "></i></div>
-					<p class="my-0">
-						{% if grand_total %}
-						£{{ grand_total|floatformat:2 }}
-						{% else %}
-						£0.00
-						{% endif %}
-					</p>
-				</div>
-			</a>
-        </li>
-    </ul>
-  </div>
    
+   
+   
+<li class="list-inline-item">
+    <a class="{% if grand_total %}text-warning{% endif %} nav-link d-block " href="{% url 'see_the_basket' %}">
+        <div class="text-center product-text">
+            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+            <p class="my-0">
+                {% if grand_total %}
+                    £{{ grand_total|floatformat:2 }}
+                {% else %}
+                    £0.00
+                {% endif %}
+            </p>
+        </div>
+    </a>
+</li>
+ <li class="list-inline-item">
+    <a class="text-black nav-link d-block " href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="text-center">
+            <div><i class="fas fa-search fa-lg"></i></div>
+            <p class="my-0">Search</p>
+        </div>
+    </a>
+    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
+        <form class="form" method="GET" action="{% url 'products' %}">
+            <div class="input-group w-100">
+                <input class="form-control border border-black rounded-0 product-text" type="text" name="q" placeholder="Search our site">
+                <div class="input-group-append">
+                    <button class="form-control btn-warning produtPageButton rounded-0" type="submit">
+                        <span class="icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</li>
+   </div>
 </nav>
 
 
