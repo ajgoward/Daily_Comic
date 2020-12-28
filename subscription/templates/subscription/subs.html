@@ -1,15 +1,29 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
-  
-      <div class="hero-image1">
-	<div class="hero-text">
-    <h1>Subscription</h1>
-	</div>
+<div class="hero-image1">
+  <div class="hero-text">
+    <h1>Subscriptions</h1>
+  </div>
 </div>
-<div class="container warpper">
-  
-		<a href="{% url 'makesub' %}">hello</a>
-		
+<div class="container warpper mt-3">
+  <div class="text-center mb-3">
+    {% for sub in subscription %}
+    <img class="img-thumbnail rounded mx-auto d-block product-image" src="{{ sub.image.url }}" alt="{{ sub.name }}"/>
+
+    <p class="mt-3 product-title">{{ sub.name }}</p>
+
+    <p class="lead mb-1 product-text">
+      {{ sub.description }}
+    </p>
+    <p class="lead mb-2 font-weight-bold product-text">
+      Our Price: £{{ sub.price }}
+    </p>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'makesub' %}" class="btn btn-warning produtPageButton mb-3" >Subscribe</a>
+    {% else %}
+    <a class="btn btn-warning produtPageButton mb-3" href="{% url 'account_login' %}">Sign In</a>
+    <a class="btn btn-danger produtPageButton mb-3" href="{% url 'account_signup' %}">Register</a>
+    {% endif %} {% endfor %}
+  </div>
 </div>
 {% endblock %}

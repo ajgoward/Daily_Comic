@@ -3,11 +3,18 @@ from profiles.models import Userprofiles
 from profiles.forms import ProfileForm
 from django.conf import settings
 import stripe
+from .models import Subscription
+
 
 # Create your views here.
 def subscription(request):
+    subscription = Subscription.objects.all()
 
-    return render(request, "subscription/subs.html")
+    context = {
+        'subscription': subscription,
+    }
+
+    return render(request, "subscription/subs.html", context)
 
 
 def make_subscription(request):
