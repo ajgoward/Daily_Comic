@@ -6,6 +6,7 @@ from products.models import Product
 import json
 import time
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -63,7 +64,8 @@ class StripeWH_Handler:
                 time.sleep(1)
         if order_exists:
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]} | \
+                    SUCCESS: Verified order already in database',
                 status=200)
         else:
             order = None
@@ -91,7 +93,8 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in item_data[
+                                'items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -106,7 +109,8 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]} | \
+                SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):

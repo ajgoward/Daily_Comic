@@ -4,8 +4,6 @@ from django.shortcuts import (
 from django.contrib import messages
 from products.models import Product
 
-# Create your views here.
-
 
 def see_the_basket(request):
     """ A view that renders the bag contents page """
