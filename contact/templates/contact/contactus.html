@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="hero-image1">
+  <div class="hero-text">
+    <h1>Contact Us</h1>
+  </div>
+</div>
+
+<div class="container">
+    <form method="POST">
+       {% csrf_token %}
+    {{ form | crispy }}
+    <input type="submit" value="Submit" class="btn btn-warning produtPageButton mb-3" />
+    </form>
+</div>
+<script>
+	$(document).ready(function(){
+    $("label").addClass("product-title");
+})
+</script>
+{% endblock %}
