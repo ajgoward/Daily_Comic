@@ -1,41 +1,85 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# About
 
-Welcome ajgoward,
+This is  a fullstack application which allows users too: 
+- View and purchase comic books 
+- View and purchase graphic novels 
+- View and purchase comic merchandise 
+- View and purchase comic toys 
+As a lifelong comic fan I thought I would do a ecommerce store to refelt my passion for comics 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+# UX
+### Wireframes 
+Please find my wireframes here 
 
-## Gitpod Reminders
+### This website is for:
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- Fans of all comic related things 
+- Children 
+- Adults 
+- Gift buyers
 
-`python3 -m http.server`
+### What they want to achieve:
 
-A blue button should appear to click: *Make Public*,
+- Browse all products on offer 
+- See how much they are saving based to RRP
+-	Filter through products to find what they are looking for i.e toys merch marvel etc.
+-	Filter products based on price high-low rating high-low
+-	Search for products in a search bar 
+-	Be able to browse the comic subscription 
+-	See the product details 
+-	See their products in a shopping cart so they know exactly what they are ordering and spending
+-	Be able to make secure online payments 
+-	Be able to easily add they delivery address 
+-	Save their details for frequent visits
+-	Also administrators will want to add additional products 
 
-Another blue button should appear to click: *Open Browser*.
+### How will they achieve it:
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+-	By making the application mobile first the users can easily see the products across all devices 
+-	On each product there will be a RRP and then underneath it will be the product price 
+-	The navigation will have drop down menus to filter through the products 
+-	On each product page there will be a dropdown to filter through price and rating 
+-	On the main navigation bar there will be a search bar 
+-	Each product will have there own detail page 
+-	Each product will have an add to basket button which will automatically update the price 
+-	There will be a shopping cart page which will list each product selected as well as quantity eiwhich they can change 
+-	The payments will be handled by STRIPE which is a secure online payment system 
+-	On check out the user will be prompted to input there delivery information also there will be a chance to sign in and save the delivery information 
+-	There will be a administrators section too add products once administrators are signed in 
 
-A blue button should appear to click: *Make Public*,
+### Existing features:
 
-Another blue button should appear to click: *Open Browser*.
+-	Navigation bar so the user can jump to the necessary information 
+-	Search bar so users can search the site by typing a query
+-	A sign in/sign up page and profile page , for users to save there delivery information 
+-	An administration page for administration to add edit and delete products 
+-	A payment handler from STRIPE 
+-	A shopping cart icon which updates on products added 
+-	A quick add to cart button for frequent users 
+-	A item detail page for users to see product details 
+-	A shopping cart page which lists the items in the cart with a subtotal including/excluding delivery
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+### Features I would like:
 
-## Updates Since The Instructional Video
+- A subscription based payment system to deliver comics on a mothly basis 
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+# TESTING 
+I have tested this application Accross all devices on google developer tools.  I have also sent this for peer code review on slack,  I also sent it to family and friends to test.  And i recieved alot of positive feedback and fixed any issues highlighted by this.  
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed along with other common files.
+I also wrote my own automated tests you will find these in each app in the repository under titles of test-views and test-forms . 
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+## Interesting bugs
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+During the course of building this app there was a bug which involved GitHub not reading my environment variables and heroku wasn’t reading them either. After contacting code institute tutor support they couldn’t understand the reason why either so I decided to create a new heroku app which fixed the issue on the heroku side but on the github side I couldn’t fix this issue . 
+Also Stripe webhooks kept failing on the heroku app as the webhook key was not getting read on the server so I was unable to create subscriptions as Stripe creates these using webhooks.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+# Technologies used 
+-	HTML5- the standard language of a website 
+-	CSS3- used for custom styling 
+-	JAVASCRIPT – for making the website more interactive and responsive 
+-	JQUERY - for making the website more interactive and responsive 
+-	PYTHON3 – backend language To add things to the database, load the pages  and add the main functionality of the application 
+-	DJANGO- the framework used 
+-	AWS – used as the media and styling files storage when deployed 
+-	BOOTSTRAP4- used as a styling 
+-	HEROKU – this is where the application is hosted 
