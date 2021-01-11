@@ -133,7 +133,7 @@
    
    
 <li class="list-inline-item">
-    <a class="{% if grand_total %}text-warning{% endif %} nav-link d-block " href="{% url 'see_the_basket' %}">
+    <a class="{% if grand_total %}text-warning {% else %} color-white {% endif %} nav-link d-block " href="{% url 'see_the_basket' %}">
         <div class="text-center product-text">
             <div><i class="fas fa-shopping-bag fa-lg"></i></div>
             <p class="my-0">
@@ -147,7 +147,7 @@
     </a>
 </li>
  <li class="list-inline-item">
-    <a class="text-black nav-link d-block " href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="text-black nav-link d-block color-white" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fas fa-search fa-lg"></i></div>
             <p class="my-0">Search</p>

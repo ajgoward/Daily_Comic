@@ -46,9 +46,9 @@ h1{
     font-size: 20px;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.color-white {
     color: white !important;
-}
+} 
 
 .nav-item{
     color: #ffff !important;
