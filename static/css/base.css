@@ -47,7 +47,7 @@ h1{
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: white;
+    color: white !important;
 }
 
 .nav-item{
