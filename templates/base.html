@@ -106,11 +106,11 @@
 					<a class="nav-link" href="{% url 'products' %}?category=Merchandise">Merch</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Profile
 					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
 						{% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
                                     <a href="{% url 'add_a_product' %}" class="dropdown-item">Product Management</a>

@@ -4,6 +4,7 @@ from .models import Userprofiles
 from .forms import ProfileForm
 from checkout.models import Order
 
+
 def theProfile(request):
     profile = get_object_or_404(Userprofiles, user=request.user)
 
@@ -13,7 +14,7 @@ def theProfile(request):
             form.save()
             messages.success(
                 request, 'Successfully updated your details!')
-            
+
     orders = profile.orders.all()
     template = 'profiles/theprofile.html'
     form = ProfileForm(instance=profile)
@@ -23,6 +24,7 @@ def theProfile(request):
         'on_profile': True,
     }
     return render(request, template, context)
+
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)

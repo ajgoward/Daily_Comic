@@ -16,7 +16,6 @@ def all_stock(request):
     direction = None
     queryset = None
 
-
     if request.GET:
 
         if 'qset' in request.GET:
@@ -170,4 +169,3 @@ def delete_the_product(request, product_id):
     product.delete()
     messages.warning(request, 'Product deleted!')
     return redirect(reverse('products'))
-

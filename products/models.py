@@ -28,8 +28,6 @@ class Product(models.Model):
     publishedby = models.CharField(max_length=254, blank=True)
     description = models.TextField()
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
-    is_subscription = models.BooleanField(default=False, null=True, blank=True)
-    sub_id = models.CharField(max_length=254, blank=True)
     rrp = models.DecimalField(max_digits=6, decimal_places=2)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(
