@@ -1,4 +1,4 @@
-You Can find the appliaction [Here](https://daily-comic-1.herokuapp.com/)
+You can find the application [Here](https://daily-comic-1.herokuapp.com/)
 
 ## Table of Contents
 1. [**About**](#about)
