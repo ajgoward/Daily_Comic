@@ -36,7 +36,7 @@ def quick_add(request, item_id):
 
 
 def add_to_basket(request, item_id):
-    """ Add a quantity of the specified product to the shopping bag """
+    """ Add a quantity of the specified product to the shopping basket """
 
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -58,7 +58,8 @@ def add_to_basket(request, item_id):
             else:
                 basket[item_id]['items_by_size'][size] = quantity
                 messages.success(
-                    request, f'Added {size.upper()}{product.name} to your bag')
+                    request,
+                    f'Added {size.upper()}{product.name} to your basket')
         else:
             basket[item_id] = {'items_by_size': {size: quantity}}
             messages.success(
@@ -98,7 +99,8 @@ def adjust_basket(request, item_id):
             if not basket[item_id]['items_by_size'][size]:
                 basket.pop(item_id)
             messages.success(
-                request, f'Removed {size.upper()}{product.name} from your bag')
+                request,
+                f'Removed {size.upper()}{product.name} from your basket')
     else:
         if quantity > 0:
             basket[item_id] = quantity
