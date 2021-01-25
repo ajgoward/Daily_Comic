@@ -21,7 +21,7 @@ As a lifelong comic fan I thought I would do a ecommerce store to refelt my pass
 
 # UX
 ### Wireframes 
-Please find my wireframes here 
+Please find my wireframes [here](wireframes/daiiycomic.pdf)
 
 ### This website is for:
 
@@ -82,7 +82,7 @@ Please find my wireframes here
 
 ### Features I would like:
 
-- A subscription based payment system to deliver comics on a mothly basis
+- A subscription based payment system to deliver comics on a monthly basis
 
 # Database Schema
 
@@ -274,3 +274,119 @@ Also Stripe webhooks kept failing on the heroku app as the webhook key was not g
 
 
 # Deployment
+
+Here is how I deployed my app:
+
+## APP INITIAL SET UP
+1.	First I created a Heroku login [here](https://id.heroku.com/login)  
+2.	Then I created a new app with a unique name and chose the region I am in 
+3.	Now with the app created I clicked the tab RESOURCES and searched for Postgres and Chose the hobby version and now that gives you a secret key in the settings tabs under the reveal config vars. The secret key is under DATABASE_URL
+## DATABASE SET UP
+4.	Now Back to the Django application. 
+5.	Run
+``` python
+ pip3 install dj_database_url 
+ pip3 install psycopg2-binary
+ ```
+6.	Then freeze the requirements by running
+``` python
+pip3 freeze > requirements.txt
+ ``` 
+7.	Next go to settings.py and import dj_database_url at the top 
+8.	Then go to databases and comment out the default settings and type
+9. 
+``` python
+DATABASES = { 
+    ‘default’: dj_database_url_parse(*add your DATABASE URL HERE*)
+    } 
+```
+10.	Then run the command below in the terminal this will initialise a new database on the Postgres 
+``` python 
+python3 manage.py migrate
+```
+11.	With that all set up it is worth adding a superuser to login with by running 
+``` python
+python3 manage.py createsuperuser 
+```
+12.	Now uncomment the default database settings and wrap this in a IF ELSE statement 
+
+![database](screenshots/database.png)
+
+## FINAL DEPLOYING STEPS
+13.	Now you need to run the code below and freeze that into the requirements as of step 6
+``` python
+pip3 install gunicorn 
+```
+14.	Create a Procfile and type  
+``` python
+web: gunicorn*your app name*.wsgi:application
+```
+15.	Now if you want to use AWS to collect all static files you need to diable them in heroku under the config vars by adding DISABLE_COLLECT_STATIC = 1
+16.	Also go to a django secret key generator and add a secret key to your config vars
+17.	Back to settings.py now and in allowedhosts put your app name in there and add localhost so gitpod works too
+18.	Now in the command line run 
+``` python
+Heroku login
+```
+19.	use “git init “to initialise and new repository 
+20.	run the command “git remote add” and the app URL which can be found on the Heroku dashboard
+21.	Then git add , git commit -m “your message here”
+22.	Then run git push Heroku master
+23.	This will now deploy your app without any static files
+## Setting up a AWS S3 bucket
+1.	First head over to [Amazon Web Services (AWS) - Cloud Computing Services](https://aws.amazon.com/) and create AWS account
+2.	Log in and search for s3 and create a new bucket 
+3.	Select the region closer to you and uncheck block all public access
+4.	Open your new bucket and turn on static website hosting which is under the properties tab
+5.	For the index and error document just fill in some default values as you wont be needing them and click save
+6.	On the permissions tab paste in your CORS configuration 
+7.	Next go the bucket policy tab and select policy generator to create a security policy fo the bucket
+8.	The policy type will be the s3 bucket policy
+9.	And you will want to allow all principals by using the * 
+10.	And the action will be GET object
+11.	Now copy and paste your ARN from your bucket policy tab and click add statement then generate policy
+12.	Copy and paste this into the bucket policy editor and add /* to the end of the recourse key and click save
+13.	Now go to the permissions tab and under public access tick the box that says everyone and tick list objects
+## Setting up IAM
+1.	Go back to the services menu and search iam
+2.	Click groups and create a new group which your own name
+3.	Keep clicking next and create a group
+4.	Now create a policy by clicking policy and create policy
+5.	Go to the JSON tab and select import managed policy
+6.	Search for s3 and import the s3 full access policy
+7.	And now under resource you want to paste in the ARN from the bucket you created twice as one is for the bucket itself and then the next add /* which adds another rule for all files and folders in the bucket 
+8.	Now click review policy give it a name and description and click create policy 
+9.	Now attach the policy to the group you created under the tabs permissions
+10.	Now to the users page , add a new user
+11.	 And give them programmatic access click next
+12.	 Now add that user to your newly created group
+13.	 Click through to the end and click create user 
+14.	 Download and save the CSV file and make sure you keep it as this is the only way you will be able to get your secret access key
+## Connect S3 to Django
+1.	Install two packages boto3 and django-storages
+2.	Freeze them into the requirements file
+3.	Add storages to the installed apps in settings
+4.	Now add these settings to your settings file
+5.	ADD your AWS keys to the Heroku config vars and add USE_AWS=True
+6.	Also remove dissabke_collect_static 
+7.	Create a file in gitpod called custom_storages
+8.	Add add this 
+
+![aws](screenshots/aws.png)
+
+9.	Now git add , git commit , and git push (make sure you have automatic deployment turned on in Heroku)
+10.	 Now all Your static files should be hosted to your site
+## Adding Images to S3
+1.	Go to S3 and create a new folder called media
+2.	Inside that click upload , Add files and then select all of your images, Click next
+3.	And under manage public permissions select grant public read accesss to these objects 
+4.	Click through the rest and then click upload 
+
+# Credits
+
+I would like to thank Code Institue for all the course material to help me create this web application
+Also I would like to thank tutor support with the help they gave me when I ran into bugs
+
+I recieved my hero images from [usplash](https://unsplash.com/)
+And all the information and pictures for all the products from my favourite comic store [forbidden planet](https://forbiddenplanet.com/)
+
